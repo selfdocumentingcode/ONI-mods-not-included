@@ -17,8 +17,6 @@ namespace NamedBigStorage
         private static readonly Dictionary<string, string> BigStorageConfigs = new Dictionary<string, string>
         {
             { "BigBeautifulStorageLockerConfig", "ConfigureBuildingTemplate" },
-            { "BigGasStorageConfig", "ConfigureBuildingTemplate" },
-            { "BigLiquidStorageConfig", "ConfigureBuildingTemplate" },
             { "BigRefrigeratorConfig", "ConfigureBuildingTemplate" },
             { "BigSmartStorageLockerConfig", "DoPostConfigureComplete" },
             { "BigStorageLockerConfig", "ConfigureBuildingTemplate" },
@@ -121,11 +119,6 @@ namespace NamedBigStorage
         [HarmonyPatch(typeof(BottleEmptierGasConfig))]
         [HarmonyPatch("ConfigureBuildingTemplate")]
         public static class BottleEmptierGasConfig_ConfigureBuildingTemplate_Patch
-        {
-            public static void Postfix(GameObject go) => NamedBigStoragePatches.AddComponent(go);
-        }
-
-        public static class BigStorageLockerConfig_ConfigureBuildingTemplate_Patch
         {
             public static void Postfix(GameObject go) => NamedBigStoragePatches.AddComponent(go);
         }

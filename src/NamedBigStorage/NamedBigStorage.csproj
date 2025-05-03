@@ -28,11 +28,13 @@
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE
-ENABLE_LOG</DefineConstants>
+        <DefineConstants>ENABLE_LOG</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="pwsh -NoProfile -File $(ProjectDir)..\..\scripts\deploy-local-mod.ps1 -TargetDir $(TargetDir) -TargetName $(TargetName)" />
+    </Target>
     <ItemGroup>
         <Reference Include="0Harmony">
           <HintPath>..\..\lib\0Harmony.dll</HintPath>
